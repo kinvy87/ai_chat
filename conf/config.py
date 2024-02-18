@@ -50,8 +50,10 @@ BaiDu_Asr_Url = 'http://vop.baidu.com/server_api'
 
 ####唤醒词
 Picovoice_key="4qu6j4jJhhdkOYzOoabMHVWbl4mQY0FgueYgkoqy2RneoJVehHyXDQ=="
-Picovoice_keyword_paths=[r'data/picovoice/shell-ball_en_windows_v2_1_0.ppn']
-# Picovoice_keyword_paths=[r'data/picovoice/shell-ball_en_raspberry-pi_v2_1_0.ppn']
+# Picovoice_keyword_paths=[r'data/picovoice/小宝_zh_raspberry-pi_v3_0_0.ppn']
+# Picovoice_keyword_paths=[r'data/picovoice/小宝_zh_windows_v3_0_0.ppn']
+# Picovoice_keyword_paths=[r'data/picovoice/shell-ball_en_windows_v2_1_0.ppn']
+Picovoice_keyword_paths=[r'data/picovoice/shell-ball_en_raspberry-pi_v2_1_0.ppn']
 # Picovoice_keyword_paths=[r'data/picovoice/hi-bell_en_raspberry-pi_v2_1_0.ppn']
 
 

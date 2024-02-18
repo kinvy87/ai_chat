@@ -16,6 +16,9 @@ sudo apt-get install portaudio19-dev
 
 pip install --upgrade pip --user
 pip install pyaudio==0.2.13
+pip install pvporcupine==3.0.0  ##对应的ppn文件也需要是3.0.0版本
+pip install openai==0.27.6
+pip install pvporcupine
 
 ###安装结果
 baidu-aip          4.16.9
@@ -91,7 +94,7 @@ python -m pip install --upgrade pip
 
 ########### 树莓派 Raspberry Pi OS(64-bit)系统配置
 ### https://blog.csdn.net/XXBaoHeTang/article/details/135481118
-配置虚拟环境
+######配置虚拟环境
 我不想装conda，所以用的virtualenv（不过也可以使用pycharm来建环境）。
 
 打开终端，运行以下命令安装virtualenv：
@@ -102,3 +105,9 @@ python3 -m venv A
 source A/bin/activate
 
 
+####### 利用树莓派的IP地址链接树莓派
+方法是开启树莓派的SSH接口
+树莓派最新的raspberry系统（2016年11月25日后）是默认关闭ssh功能
+先将树莓派关机，取出树莓派的内存卡，在电脑中打开，新建一个文本文档，将其名称修改为ssh，没有后缀
+打开putty，输入复制好的ip地址，输入树莓派的IP地址
+树莓派的默认用户名是pi，密码是raspberry

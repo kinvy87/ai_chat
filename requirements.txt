@@ -1,7 +1,6 @@
 baidu-aip
 chardet
 openai
-PyAudio
 pygame
 pypinyin
 pvporcupine
