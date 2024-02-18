@@ -1,0 +1,7 @@
+baidu-aip==4.16.9
+chardet==3.0.4
+openai==0.26.3
+PyAudio==0.2.13
+pygame==2.1.2
+pypinyin==0.48.0
+textdistance==4.5.0

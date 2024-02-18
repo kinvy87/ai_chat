@@ -1,0 +1,90 @@
+原文：https://www.cnblogs.com/Vrapile/p/8421403.html
+sudo git clone https://gitlab.com/kinvy87/ai_chat.git
+https://blog.51cto.com/u_8475449/5719531
+sudo apt install net-tools
+######### 1-anaconda
+https://blog.csdn.net/yuehenmiss/article/details/125412725
+export PATH="/home/kinvy/archiconda3/bin:$PATH"
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+conda config --set show_channel_urls yes
+
+#### 1.1 apt-get/pip 安装python依赖包
+sudo apt-get update
+sudo apt-get install gcc
+sudo apt-get install portaudio19-dev
+
+pip install --upgrade pip --user
+pip install pyaudio==0.2.13
+
+###安装结果
+baidu-aip          4.16.9
+chardet            3.0.4
+conda              4.5.12
+openai             0.26.3
+pip                22.3.1
+PyAudio            0.2.13
+pygame             2.1.2
+pypinyin           0.48.0
+textdistance       4.5.0
+
+#### 1.2采样率异常
+https://javaforall.cn/181265.html
+树莓派在基于pyaudio录音的时候会提示如上错误，这主要是使用的树莓派声卡不支持当前的采用率，没关系，其实在alsa架构下我们可以通过声卡的插件实现转换。在树莓派下家目录创建一个声卡隐藏配置文件 .asoundrc。特别说明，不要在你的pyaudio里面设置打开声卡的编号因为下面的配置已经配置了。
+1)安装
+sudo apt-get install pulseaudio
+
+2)在/home/目录下创建隐藏文件
+touch .asoundrc
+vi .asoundrc
+pcm.!default {
+    type hw
+    card 1
+}
+ctl.!default {
+    type hw
+    card 1
+}
+
+##### 1.3 
+kinvy@kinvy-desktop:~/Project/ai_chat$ sudo chmod 777 voice_say/speech.wav
+kinvy@kinvy-desktop:~/Project/ai_chat$ sudo chmod 777 ./tts_voice/replay.mp3
+kinvy@kinvy-desktop:~/Project/ai_chat$ sudo chmod 777 voice_broadcast/weather_forecast.mp3
+kinvy@kinvy-desktop:~/Project/ai_chat$ sudo chmod 777 tts_voice/answer.mp3
+
+https://picovoice.ai/docs/quick-start/porcupine-python/
+
+
+##### 1.4 控制舵机 No access to /dev/mem.  Try running as root
+pip install rpi.gpio
+sudo groupadd gpio
+sudo usermod -a -G gpio kinvy
+sudo grep gpio /etc/group
+sudo chown root.gpio /dev/gpiomem
+sudo chmod g+rw /dev/gpiomem
+
+
+######### 2-minianaconda
+http://it.taocms.org/12/15260.htm
+https://mirrors.bfsu.edu.cn/anaconda/miniconda/
+https://blog.csdn.net/guoqingru0311/article/details/123819353
+当输入“conda list”后可能显示命令没有，多是由于没有添加环境变量导致，输入以下指令即可：
+export PATH="/home/pi/miniconda3/bin:$PATH"
+######### 2.2
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+conda config --set show_channel_urls yes #显示下载地址：
+######### 2.3
+conda config --add channels rpi  #增加树莓派的源
+conda install python=3.6   #报错
+报错信息如下：
+AttributeError: 'SSLError' object has no attribute 'message'
+解决方案：
+conda config --set ssl_verify false
+conda create --name chatbot python=3.6  #报错
+报错信息如下：
+module 'pip._vendor.requests' has no attribute 'Session'
+解决方案：
+python -m pip install --upgrade pip
+
+
