@@ -88,3 +88,17 @@ module 'pip._vendor.requests' has no attribute 'Session'
 python -m pip install --upgrade pip
 
 
+
+########### 树莓派 Raspberry Pi OS(64-bit)系统配置
+### https://blog.csdn.net/XXBaoHeTang/article/details/135481118
+配置虚拟环境
+我不想装conda，所以用的virtualenv（不过也可以使用pycharm来建环境）。
+
+打开终端，运行以下命令安装virtualenv：
+sudo apt-get update sudo apt-get install python3-venv
+创建虚拟环境,运行以下命令创建一个名为A的虚拟环境：
+python3 -m venv A
+激活虚拟环境，激活虚拟环境以开始使用它。运行以下命令（环境A在home/pi/下）：
+source A/bin/activate
+
+
